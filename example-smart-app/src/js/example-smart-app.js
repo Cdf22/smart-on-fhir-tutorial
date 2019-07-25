@@ -1,16 +1,13 @@
 (function(window){
-  debugger;
   window.extractData = function() {
     var ret = $.Deferred();
 
     function onError() {
-      debugger;
       console.log('Loading error', arguments);
       ret.reject();
     }
 
     function onReady(smart)  {
-      debugger;
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
@@ -28,6 +25,7 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
+          debugger;
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
@@ -76,7 +74,6 @@
   };
 
   function defaultPatient(){
-    debugger;
     return {
       fname: {value: ''},
       lname: {value: ''},
@@ -91,7 +88,6 @@
   }
 
   function getBloodPressureValue(BPObservations, typeOfPressure) {
-    debugger;
     var formattedBPObservations = [];
     BPObservations.forEach(function(observation){
       var BP = observation.component.find(function(component){
@@ -109,7 +105,6 @@
   }
 
   function getQuantityValueAndUnit(ob) {
-    debugger;
     if (typeof ob != 'undefined' &&
         typeof ob.valueQuantity != 'undefined' &&
         typeof ob.valueQuantity.value != 'undefined' &&
