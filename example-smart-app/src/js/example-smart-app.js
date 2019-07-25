@@ -1,8 +1,10 @@
 (function(window){
+  debugger;
   window.extractData = function() {
     var ret = $.Deferred();
 
     function onError() {
+      debugger;
       console.log('Loading error', arguments);
       ret.reject();
     }
@@ -74,6 +76,7 @@
   };
 
   function defaultPatient(){
+    debugger;
     return {
       fname: {value: ''},
       lname: {value: ''},
@@ -88,6 +91,7 @@
   }
 
   function getBloodPressureValue(BPObservations, typeOfPressure) {
+    debugger;
     var formattedBPObservations = [];
     BPObservations.forEach(function(observation){
       var BP = observation.component.find(function(component){
@@ -105,6 +109,7 @@
   }
 
   function getQuantityValueAndUnit(ob) {
+    debugger;
     if (typeof ob != 'undefined' &&
         typeof ob.valueQuantity != 'undefined' &&
         typeof ob.valueQuantity.value != 'undefined' &&
